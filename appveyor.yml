@@ -1,0 +1,18 @@
+version: 1.0.0.{build}
+image: Visual Studio 2022
+configuration: Release
+platform: x64
+install:
+- cmd: >-
+    call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+build_script:
+- cmd: >-
+    cd src
+
+    C:\Qt\5.15.2\msvc2019_64\bin\qmake.exe dds.pro
+
+    nmake.exe
+
+artifacts:
+- path: src\plugins\imageformats\*.dll
